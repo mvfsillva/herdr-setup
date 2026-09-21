@@ -5,7 +5,7 @@ My [Herdr](https://herdr.dev) setup: keybindings, sidebar layout and zsh helpers
 ## Install
 
 ```sh
-git clone <this-repo> ~/Developer/herdr-setup
+git clone git@github.com:mvfsillva/herdr-setup.git ~/Developer/herdr-setup
 ~/Developer/herdr-setup/install.sh
 ```
 
