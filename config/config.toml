@@ -1,0 +1,131 @@
+onboarding = false
+[keys]
+
+# ────────────────────────────────────────
+# PANES
+# ────────────────────────────────────────
+
+# Move foco para o pane da esquerda
+focus_pane_left = "ctrl+alt+cmd+shift+h"
+
+# Move foco para o pane de baixo
+focus_pane_down = "ctrl+alt+cmd+shift+j"
+
+# Move foco para o pane de cima
+focus_pane_up = "ctrl+alt+cmd+shift+k"
+
+# Move foco para o pane da direita
+focus_pane_right = "ctrl+alt+cmd+shift+l"
+
+# Cria um novo pane lado a lado
+split_vertical = "ctrl+alt+cmd+shift+v"
+
+# Cria um novo pane abaixo do atual
+split_horizontal = "ctrl+alt+cmd+shift+s"
+
+# Fecha o pane atualmente em foco
+close_pane = "ctrl+alt+cmd+shift+x"
+
+# Expande ou restaura o pane atual
+zoom = "ctrl+alt+cmd+shift+z"
+
+# ---
+# Redimensiona o pane para esquerda
+resize_pane_left = "ctrl+alt+cmd+shift+left"
+
+# Redimensiona o pane para baixo
+resize_pane_down = "ctrl+alt+cmd+shift+down"
+
+# Redimensiona o pane para cima
+resize_pane_up = "ctrl+alt+cmd+shift+up"
+
+# Redimensiona o pane para direita
+resize_pane_right = "ctrl+alt+cmd+shift+right"
+# ---
+
+
+# ────────────────────────────────────────
+# TABS
+# ────────────────────────────────────────
+
+# Cria uma nova tab no workspace
+new_tab = "ctrl+alt+cmd+shift+t"
+
+# Seleciona a tab anterior
+previous_tab = "ctrl+alt+cmd+shift+["
+
+# Seleciona a próxima tab
+next_tab = "ctrl+alt+cmd+shift+]"
+
+# Fecha a tab atualmente selecionada
+close_tab = "ctrl+alt+cmd+shift+q"
+
+# Renomeia a tab atualmente ativa
+rename_tab = "ctrl+alt+cmd+shift+r"
+
+
+# ────────────────────────────────────────
+# WORKSPACES
+# ────────────────────────────────────────
+
+# Abre o seletor de workspaces
+workspace_picker = "ctrl+alt+cmd+shift+w"
+
+# Cria um novo workspace
+new_workspace = "ctrl+alt+cmd+shift+n"
+
+# Vai para o workspace anterior
+previous_workspace = "ctrl+alt+cmd+shift+comma"
+
+# Vai para o próximo workspace
+next_workspace = "ctrl+alt+cmd+shift+."
+
+# Abre o navegador global do Herdr
+goto = "ctrl+alt+cmd+shift+g"
+
+# Cria um novo Git worktree
+new_worktree = "ctrl+alt+cmd+shift+f"
+
+
+# ────────────────────────────────────────
+# UI
+# ────────────────────────────────────────
+
+# Abre ou fecha a sidebar
+toggle_sidebar = "ctrl+alt+cmd+shift+b"
+
+# Abre as configurações do Herdr
+settings = "ctrl+alt+cmd+shift+o"
+
+# Abre a ajuda de keybindings
+help = "ctrl+alt+cmd+shift+/"
+
+# Recarrega este arquivo de config
+reload_config = "ctrl+alt+cmd+shift+u"
+
+[ui.toast]
+delivery = "herdr"
+
+[ui]
+show_agent_labels_on_pane_borders = true
+
+# Define largura padrão da sidebar
+sidebar_width = 64
+
+# Define largura mínima da sidebar
+sidebar_min_width = 42
+
+# Define largura máxima da sidebar
+sidebar_max_width = 82
+
+# Pergunta o nome do novo workspace
+prompt_new_workspace_name = true
+agent_panel_sort = "spaces"
+
+# clauth herdr plugin
+[[keys.command]]
+key = "prefix+a"
+type = "plugin_action"
+command = "clauth.open"
+description = "clauth accounts"
+

@@ -1,0 +1,23 @@
+# Sidebar rows and the rename popup, both fed by the herdr-agent-names plugin.
+# Installed only when the plugin binary is built.
+[ui.sidebar.agents]
+rows = [
+  [{ token = "$an_space", fg = "#cdd6f4", bold = true }],
+  ["state_icon", { token = "$an_name_tag", fg = "#89b4fa", bold = true }, { token = "$an_meta", dim = true }],
+  ["terminal_title_stripped"],
+]
+
+[ui.sidebar.agents.rows_by_agent]
+claude = [
+  [{ token = "$an_space", fg = "#cdd6f4", bold = true }],
+  ["state_icon", { token = "$an_name_tag", fg = "#89b4fa", bold = true }, { token = "$an_meta", dim = true }],
+  ["terminal_title_stripped"],
+]
+
+[[keys.command]]
+key = "ctrl+alt+cmd+shift+m"
+type = "popup"
+command = "{{AGENT_NAMES_BIN}} rename"
+description = "rename agent"
+width = 64
+height = 14
