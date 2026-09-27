@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Installs this Herdr setup: config.toml, keybindings and shell helpers.
+# Installs this Herdr setup: config.toml, keybindings, plugins and shell helpers.
 # Safe to re-run. Backs up anything it replaces.
 set -euo pipefail
 
@@ -49,6 +49,27 @@ if [ -e "$CONFIG" ] && ! cmp -s "$TMP" "$CONFIG"; then
 fi
 mv "$TMP" "$CONFIG"
 say "wrote $CONFIG"
+
+# ── plugins ─────────────────────────────────────────────
+# The bindings above call these. Installs whatever is missing.
+# PLUGINS=none skips this step.
+if [ "${PLUGINS:-}" != "none" ]; then
+  INSTALLED="$(herdr plugin list 2>/dev/null || true)"
+  for entry in \
+    "clauth uwuclxdy/clauth/herdr-plugin" \
+    "herdr-harpoon KonstantinKai/herdr-harpoon" \
+    "herdr-sidebar alexarthurs/herdr-sidebar/plugins/herdr-sidebar"
+  do
+    id="${entry%% *}"; src="${entry#* }"
+    if printf '%s\n' "$INSTALLED" | grep -q "^- $id "; then
+      say "plugin $id already installed"
+    elif herdr plugin install -y "$src" >/dev/null 2>&1; then
+      say "installed plugin $id"
+    else
+      say "could not install $id, try: herdr plugin install $src"
+    fi
+  done
+fi
 
 # ── caps lock (optional) ────────────────────────────────
 # CAPSLOCK=f18|hyper|none skips the prompt, for unattended runs.

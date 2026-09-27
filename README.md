@@ -10,8 +10,8 @@ git clone git@github.com:mvfsillva/herdr-setup.git ~/Developer/herdr-setup
 ```
 
 It backs up the current `~/.config/herdr/config.toml`, writes the new one,
-asks what to do with Caps Lock, adds a source line to `.zshrc`, and reloads the
-running server. Re-running is fine.
+installs the plugins the bindings call, asks what to do with Caps Lock, adds a
+source line to `.zshrc`, and reloads the running server. Re-running is fine.
 
 If these aliases are still pasted inline in your `.zshrc`, delete that section after installing.
 
@@ -19,7 +19,7 @@ If these aliases are still pasted inline in your `.zshrc`, delete that section a
 
 ```
 config/config.toml       keybindings and UI
-config/agent-names.toml  sidebar rows for the herdr-agent-names plugin
+config/agent-names.toml  sidebar rows and rename popup for herdr-agent-names
 shell/herdr.zsh          aliases and helper functions
 install.sh
 ```
@@ -34,13 +34,25 @@ Everything is on `ctrl+alt+cmd+shift` so nothing collides with the shell or the 
 | `left` `down` `up` `right` | resize pane | `[` `]` | previous / next tab |
 | `v` / `s` | split right / down | `r` | rename tab |
 | `x` | close pane | `q` | close tab |
-| `z` | zoom pane | `w` | workspace picker |
-| `b` | toggle sidebar | `n` | new workspace |
-| `g` | global goto | `,` `.` | previous / next workspace |
-| `f` | new worktree | `o` | settings |
-| `m` | rename agent | `u` | reload config |
+| `z` | zoom pane | `n` | new workspace |
+| `b` | toggle Herdr's sidebar | `,` `.` | previous / next workspace |
+| `d` | global goto | `w` | new worktree |
+| `o` | settings | `/` | keybinding help |
+| `i` | reload config | `a` | rename agent |
+| `u` | throwaway shell in the pane's directory | `g` | lazygit |
+| `enter` | open the pane's directory in Zed | | |
 
-`prefix+a` opens [clauth](https://github.com/uwuclxdy/clauth), if you have it installed.
+Plugin bindings, same modifiers:
+
+| Key | Action | Key | Action |
+|---|---|---|---|
+| `m` | harpoon: mark pane | `e` | sidebar: explorer |
+| `0` | harpoon: pick a mark | `f` | sidebar: search |
+| `1` to `9` | harpoon: jump to mark | `c` | sidebar: source control |
+| | | `p` | sidebar: quick open |
+
+On the prefix: `prefix+a` renames the agent, `prefix+shift+a` opens clauth,
+`prefix+b` toggles the herdr-sidebar plugin.
 
 ### Caps Lock
 
@@ -95,8 +107,12 @@ needs an app.
 
 ## Plugins
 
-Not installed by this script, install them through Herdr:
+`install.sh` installs the three GitHub ones if they are missing. Pass
+`PLUGINS=none` to skip that.
 
 - [clauth](https://github.com/uwuclxdy/clauth), a Claude Code account switcher
-- `herdr-agent-names`, agent name and model in the sidebar. Build it with
-  `cargo build --release`, then re-run `install.sh` so the sidebar block lands.
+- [herdr-harpoon](https://github.com/KonstantinKai/herdr-harpoon), mark panes and jump to them by number
+- [herdr-sidebar](https://github.com/alexarthurs/herdr-sidebar), file explorer, search, git and quick open
+- `herdr-agent-names`, agent name and model in the sidebar. Not on GitHub, so
+  build it with `cargo build --release`, then re-run `install.sh` so the
+  sidebar block lands.
